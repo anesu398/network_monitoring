@@ -1,0 +1,49 @@
+<!-- templates/visualization.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Visualization</title>
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Data Visualization</h1>
+    
+    <!-- Container for the plot -->
+    <div id="plot-container"></div>
+
+    <!-- Define the JSON data object -->
+    <script>
+        var jsonData = {
+            "device_names": { device_names , tojson },
+            "device_ip_addresses": { device_ip_addresses , tojson }
+        };
+
+        // JavaScript code to generate the plot using Plotly
+        var trace = {
+            x: jsonData.device_names,
+            y: jsonData.device_ip_addresses,
+            type: 'bar',
+            marker: {
+                color: 'rgb(55, 128, 191)',
+            }
+        };
+
+        var layout = {
+            title: 'Device IP Addresses',
+            xaxis: {
+                title: 'Device Name'
+            },
+            yaxis: {
+                title: 'IP Address'
+            }
+        };
+
+        var data = [trace];
+
+        Plotly.newPlot('plot-container', data, layout);
+    </script>
+</body>
+</html>

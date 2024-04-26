@@ -1,0 +1,23 @@
+<!-- templates/search_results.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <p>Showing results for: {{ query }}</p>
+    
+    {% if devices %}
+        <ul>
+            {% for device in devices %}
+                <li>{{ device.name }} - {{ device.ip_address }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No devices found.</p>
+    {% endif %}
+</body>
+</html>

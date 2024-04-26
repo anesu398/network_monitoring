@@ -1,0 +1,41 @@
+<!-- templates/devices.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Device List</title>
+</head>
+<body>
+    <h1>Device List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>IP Address</th>
+                <th>Community String</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for device in devices.items %}
+            <tr>
+                <td>{{ device.id }}</td>
+                <td>{{ device.name }}</td>
+                <td>{{ device.ip_address }}</td>
+                <td>{{ device.community_string }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Pagination links -->
+    {% if devices.has_prev %}
+    <a href="?page={{ devices.prev_num }}">Previous</a>
+    {% endif %}
+    {% if devices.has_next %}
+    <a href="?page={{ devices.next_num }}">Next</a>
+    {% endif %}
+</body>
+</html>

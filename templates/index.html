@@ -1,0 +1,48 @@
+<!-- app/templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Monitoring</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+<body>
+    <h1>Network Monitoring</h1>
+    
+    <!-- Button to collect SNMP data -->
+    <button onclick="collectSnmpData()">Collect SNMP Data</button>
+    
+    <!-- Button to send email alert -->
+    <button onclick="sendEmailAlert()">Send Email Alert</button>
+
+    <script>
+        // Function to collect SNMP data
+        function collectSnmpData() {
+            axios.get('/snmp')
+                .then(function (response) {
+                    console.log(response.data);
+                    alert('SNMP data collected successfully!');
+                })
+                .catch(function (error) {
+                    console.error('Error collecting SNMP data:', error);
+                    alert('Error collecting SNMP data. Please check the console for details.');
+                });
+        }
+
+        // Function to send email alert
+        function sendEmailAlert() {
+            axios.get('/send_email_alert')
+                .then(function (response) {
+                    console.log(response.data);
+                    alert('Email alert sent successfully!');
+                })
+                .catch(function (error) {
+                    console.error('Error sending email alert:', error);
+                    alert('Error sending email alert. Please check the console for details.');
+                });
+        }
+    </script>
+</body>
+</html>
